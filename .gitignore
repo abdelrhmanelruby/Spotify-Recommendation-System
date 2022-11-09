@@ -1,0 +1,16 @@
+Spotify
+.cache
+Data
+__pycache__
+
+track_features.txt
+audio_features_log.txt
+artist_features.txt
+
+Streamlit/.cache
+Streamlit/__pycache__
+Streamlit/Data
+
+spotify_million_playlist_dataset
+spotify_million_playlist_dataset_challenge.zip
+spotify_million_playlist_dataset.zip
