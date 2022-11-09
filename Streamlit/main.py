@@ -55,20 +55,20 @@ def play_recomm():
         if len(pd.read_csv('Data/new_tracks.csv')) >= 200:
             with st.spinner('Updating the dataset...'):
                 x=update_dataset()
-                st.success('{} New tracks add to the dataset'.format(x))
+                st.success('{} New tracks were added to the dataset.'.format(x))
     except:
-        st.error("Update dataset failed")
+        st.error("The dataset update failed. ")
     with st.spinner('Getting Recommendations...'):
         res,err = playlist_model(st.session_state.p_url,st.session_state.model,st.session_state.genre,st.session_state.artist)
         st.session_state.rs=res
         st.session_state.err=err
     if len(st.session_state.rs)>=1:
         if st.session_state.model == 'Model 1' or st.session_state.model == 'Model 2':
-            st.success('Go to Result page to view the top {} recommendations'.format(len(st.session_state.rs)))
+            st.success('Go to the Result page to view the top {} recommendations'.format(len(st.session_state.rs)))
         else:
-            st.success('Go to Result page to view the Spotify recommendations')
+            st.success('Go to the Result page to view the  Spotify recommendations')
     else:
-        st.error('Model failed check log for more info')   
+        st.error('Model failed. Check the log for more information.')   
 
 def art_recomm():
     if 'rs' in st.session_state:
@@ -78,9 +78,9 @@ def art_recomm():
         st.session_state.rs=res
         st.session_state.err=err
     if len(st.session_state.rs)>=1:
-        st.success('Go to Result page to view Artist top tracks')
+        st.success("Go to the Result page to view the Artist's top tracks")
     else:
-        st.error('Model failed check log for more info')
+        st.error('Model failed. Check the log for more information.')
 
 def song_recomm():
     if 'rs' in st.session_state:
@@ -91,11 +91,11 @@ def song_recomm():
         st.session_state.err=err
     if len(st.session_state.rs)>=1:
         if st.session_state.model == 'Model 1' or st.session_state.model == 'Model 2':
-            st.success('Go to Result page to view the top {} recommendations'.format(len(st.session_state.rs)))
+            st.success('Go to the Result page to view the top {} recommendations'.format(len(st.session_state.rs)))
         else:
-            st.success('Go to Result page to view the Spotify recommendations')
+            st.success('Go to the Result page to view the  Spotify recommendations')
     else:
-        st.error('Model failed check log for more info')
+        st.error('Model failed. Check the log for more information.')
 
 def playlist_page():
     st.subheader("User Playlist")
@@ -212,7 +212,7 @@ def home_page():
     
 def result_page():
     if 'rs' not in st.session_state:
-        st.error('Please select an model in Home page and run Get Recommendations')
+        st.error('Please select a model on the Home page and run Get Recommendations')
     else:
         st.success('Top {} recommendations'.format(len(st.session_state.rs)))
         i=0
@@ -230,7 +230,8 @@ def Log_page():
 def About_page():
     st.header('Development')
     """
-    Check out the repository for the source code and approaches, and don't hesitate to contact me if you have any questions. I'm excited to read your review.
+    Check out the [repository](https://github.com/abdelrhmanelruby/Spotify-Recommendation-System) for the source code and approaches, and don't hesitate to contact me if you have any questions. I'm excited to read your review.
+    [Github](https://github.com/abdelrhmanelruby)  [Linkedin](https://www.linkedin.com/in/abdelrhmanelruby/) Email : abdelrhmanelruby@gmail.com
     """
     st.subheader('Spotify Million Playlist Dataset')
     """

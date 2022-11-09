@@ -31,7 +31,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
                      track_ids.append(track['id'])
                  return track_ids
              except Exception as e:
-                 log.append('Failed to load playlist')
+                 log.append('Failed to load the playlist')
                  log.append(e)
 
          track_ids = get_IDs('Ruby', uri)
@@ -79,7 +79,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
                  artist_id.append(artist[0]['id'])
              return track_ids, artist_id
      except Exception as e:
-         log.append('Failed to load playlist')
+         log.append('Failed to load the playlist')
          log.append(e)
 
      track_ids, artist_id = get_IDs('Ruby', uri)
@@ -87,7 +87,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
 
      artist_id_uni = list(set(artist_id))
      track_ids_uni = list(set(track_ids))
-     log.append("Number of unique Artist : {}".format(len(artist_id_uni)))
+     log.append("Number of unique Artists : {}".format(len(artist_id_uni)))
      log.append("Number of unique Tracks : {}".format(len(track_ids_uni)))
 
      def extract(track_ids_uni, artist_id_uni):
@@ -171,7 +171,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
                  'Track_release_date', 'Track_pop', 'Artist_pop']].astype('int8')
          except Exception as e:
              err.append(e)
-         err.append('Finsh extraction')
+         err.append('Finish extraction')
          return test, err
      test, err = extract(track_ids_uni, artist_id_uni)
     
@@ -180,7 +180,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
      del err
      grow = test.copy()
      test['Artist_genres'] = test['Artist_genres'].apply(lambda x: x.split(" "))
-     tfidf = TfidfVectorizer(max_features=max_gen)  # max_features=5
+     tfidf = TfidfVectorizer(max_features=max_gen)  
      tfidf_matrix = tfidf.fit_transform(test['Artist_genres'].apply(lambda x: " ".join(x)))
      genre_df = pd.DataFrame(tfidf_matrix.toarray())
      genre_df.columns = ['genre' + "|" +i for i in tfidf.get_feature_names_out()]
@@ -192,7 +192,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
      for i in range(int(lendf/2), lendf+1, int(lendf/2)):
          try:
              df = pd.read_csv('Data/streamlit.csv',names= col_name,dtype=dtypes,skiprows=x,nrows=i)
-             log.append('reading df chunks from {} to {}'.format(x,i))
+             log.append('reading data frame chunks from {} to {}'.format(x,i))
          except Exception as e:
              log.append('Failed to load grow')
              log.append(e)
@@ -364,10 +364,10 @@ def song_model(url, model, max_gen=3, same_art=5):
         test[['Track_release_date', 'Track_pop', 'Artist_pop']] = test[['Track_release_date', 'Track_pop', 'Artist_pop']].astype('int8')
      except Exception as e:
         log.append(e)
-     log.append('Finsh extraction')
+     log.append('Finish extraction')
      grow = test.copy()
      test['Artist_genres'] = test['Artist_genres'].apply(lambda x: x.split(" "))
-     tfidf = TfidfVectorizer(max_features=max_gen)  # max_features=5
+     tfidf = TfidfVectorizer(max_features=max_gen)  
      tfidf_matrix = tfidf.fit_transform(test['Artist_genres'].apply(lambda x: " ".join(x)))
      genre_df = pd.DataFrame(tfidf_matrix.toarray())
      genre_df.columns = ['genre' + "|" +i for i in tfidf.get_feature_names_out()]
@@ -379,7 +379,7 @@ def song_model(url, model, max_gen=3, same_art=5):
      for i in range(int(lendf/2), lendf+1, int(lendf/2)):
          try:
              df = pd.read_csv('Data/streamlit.csv',names= col_name,dtype=dtypes,skiprows=x,nrows=i)
-             log.append('reading df chunks from {} to {}'.format(x,i))
+             log.append('reading data frame chunks from {} to {}'.format(x,i))
          except Exception as e:
              log.append('Failed to load grow')
              log.append(e)
