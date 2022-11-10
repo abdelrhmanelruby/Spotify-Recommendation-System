@@ -1,4 +1,5 @@
 # Spotify-Recommendation-System
+Please visit the following link to access the app's final version: [Spotify-Recommendation-System](https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System)
 
 ## Description
 The goal of this project is to create a recommendation system that would allow users to discover music based on a given playlist or song that they already enjoy. This project begins with data collection and a self-growing dataset to ensure that the model will work well in the future and continues through model deployment.
@@ -24,7 +25,7 @@ Playlists that meet the following criteria were selected at random:
 Check out the dataset [here](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge)
 
 ## Data extraction
-The first step will be to obtain keys to use. We'll need a [Spotify for developers] (https://developer.spotify.com/) account for this. This is equivalent to a Spotify account and does not necessitate Spotify Premium. Go to the dashboard and select "create an app" from there. We now have access to the public and private keys required to use the API.
+The first step will be to obtain keys to use. We'll need a [Spotify for developers](https://developer.spotify.com/) account for this. This is equivalent to a Spotify account and does not necessitate Spotify Premium. Go to the dashboard and select "create an app" from there. We now have access to the public and private keys required to use the API.
 
 Now that we have an app, we can get a client ID and a client secret for this app. Both of these will be required to authenticate with the Spotify web API for our application, and can be thought of as a kind of username and password for the application. It is best practice not to share either of these, but especially don’t share the client secret key. To prevent this, we can keep it in a separate file, which, if you’re using Git for version control, should be Gitignored.
 
@@ -94,7 +95,7 @@ and the Spotify model, which is available through the Spotify API
 ### Deployment
 Please visit the following link to access the app's final version: https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System
 The website can be accessed and tested out there. Due to the limitations of file sizes and RAM limits, I decided to go with
-[huggingface] (https://huggingface.co/) because the free version is not severely limited.  
+[huggingface](https://huggingface.co/) because the free version is not severely limited.  
 
 You can test the app on localhost by cloning the repository data, cd into the folder and run the following commands:
 ```python
