@@ -227,6 +227,8 @@ def Log_page():
     if log == True:
      if 'err' in st.session_state:
         st.write(st.session_state.err)
+    with open('Data/streamlit.csv') as f:
+        st.download_button('Download Dataset', f,file_name='streamlit.csv')
 def About_page():
     st.header('Development')
     """

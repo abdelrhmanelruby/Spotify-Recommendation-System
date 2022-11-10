@@ -14,7 +14,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
     try:
      log.append('Start logging')
      uri = url.split('/')[-1].split('?')[0]
-     stream = open("spotify/spotify.yaml")
+     stream = open("Spotify/Spotify.yaml")
      spotify_details = yaml.safe_load(stream)
      auth_manager = SpotifyClientCredentials(
          client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
@@ -258,13 +258,13 @@ def playlist_model(url, model, max_gen=3, same_art=5):
      log.append('{} New Tracks Found'.format(len(grow)))
      if(len(grow)>=1):
         try:
-            new=pd.read_csv('data/new_tracks.csv',dtype=dtypes)
+            new=pd.read_csv('Data/new_tracks.csv',dtype=dtypes)
             new=pd.concat([new, grow], axis=0)
             new=new[new.Track_pop >0]
             new.drop_duplicates(subset=['track_uri'], inplace=True,keep='last')
-            new.to_csv('data/new_tracks.csv',index=False)
+            new.to_csv('Data/new_tracks.csv',index=False)
         except:
-            grow.to_csv('data/new_tracks.csv', index=False)
+            grow.to_csv('Data/new_tracks.csv', index=False)
      log.append('Model run successfully')
     except Exception as e:
         log.append("Model Failed")
@@ -275,7 +275,7 @@ def playlist_model(url, model, max_gen=3, same_art=5):
 
 def top_tracks(url,region):
     uri = url.split('/')[-1].split('?')[0]
-    stream= open("spotify/spotify.yaml")
+    stream= open("Spotify/Spotify.yaml")
     spotify_details = yaml.safe_load(stream)
     auth_manager = SpotifyClientCredentials(client_id=spotify_details['Client_id'],client_secret=spotify_details['client_secret'])
     sp = spotipy.client.Spotify(auth_manager=auth_manager)
@@ -298,7 +298,7 @@ def song_model(url, model, max_gen=3, same_art=5):
     try:
      log.append('Start logging')
      uri = url.split('/')[-1].split('?')[0]
-     stream = open("spotify/spotify.yaml")
+     stream = open("Spotify/Spotify.yaml")
      spotify_details = yaml.safe_load(stream)
      auth_manager = SpotifyClientCredentials(
          client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
@@ -445,13 +445,13 @@ def song_model(url, model, max_gen=3, same_art=5):
      log.append('{} New Tracks Found'.format(len(grow)))
      if(len(grow)>=1):
         try:
-            new=pd.read_csv('data/new_tracks.csv',dtype=dtypes)
+            new=pd.read_csv('Data/new_tracks.csv',dtype=dtypes)
             new=pd.concat([new, grow], axis=0)
             new=new[new.Track_pop >0]
             new.drop_duplicates(subset=['track_uri'], inplace=True,keep='last')
-            new.to_csv('data/new_tracks.csv',index=False)
+            new.to_csv('Data/new_tracks.csv',index=False)
         except:
-            grow.to_csv('data/new_tracks.csv', index=False)
+            grow.to_csv('Data/new_tracks.csv', index=False)
      log.append('Model run successfully')
     except Exception as e:
         log.append("Model Failed")
@@ -472,10 +472,10 @@ def update_dataset():
     cur = len(df)
     df=pd.concat([df,grow],axis=0)
     grow=pd.DataFrame(columns=col_name)
-    grow.to_csv('data/new_tracks.csv',index=False)
+    grow.to_csv('Data/new_tracks.csv',index=False)
     df=df[df.Track_pop >0]
     df.drop_duplicates(subset=['track_uri'],inplace=True,keep='last')
     df.dropna(axis=0,inplace=True)
-    df.to_csv('data/streamlit.csv',index=False)
+    df.to_csv('Data/streamlit.csv',index=False)
     return (len(df)-cur)
 
