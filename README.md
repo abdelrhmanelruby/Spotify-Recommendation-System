@@ -1,6 +1,13 @@
 # Spotify-Recommendation-System
 Please visit the following link to access the app's final version: [Spotify-Recommendation-System](https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System)
 
+
+
+https://user-images.githubusercontent.com/107134115/201241072-06681109-72ad-4416-b5f0-35322646dc1e.mp4
+
+
+
+
 ## Description
 The goal of this project is to create a recommendation system that would allow users to discover music based on a given playlist or song that they already enjoy. This project begins with data collection and a self-growing dataset to ensure that the model will work well in the future and continues through model deployment.
 
@@ -89,8 +96,13 @@ If I'm listening to music from the 1950s, I'd like the model to recommend music 
 
 ![image](https://user-images.githubusercontent.com/107134115/201203569-6bcd14fd-6704-4ad7-9577-44095bd65f74.png)
 
-- I decided to go with three models. first model, which gives the genera more weight than the audio features, and the second model, which gives equal weight to all features.
-and the Spotify model, which is available through the Spotify API
+- I decided to go with three models. 
+
+ **Model 1** which gives the genera more weight than the audio features
+
+ **Model 2**  which gives equal weight to all features (Ignoring playlist languages and genres)
+ 
+ **Spotify Model**, which is available through the Spotify API
 
 ### Deployment
 Please visit the following link to access the app's final version: https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System
