@@ -100,7 +100,7 @@ If I'm listening to music from the 1950s, I'd like the model to recommend music 
 
  **Model 1** which gives the genera more weight than the audio features
 
- **Model 2**  which gives equal weight to all features (Ignoring playlist languages and genres)
+ **Model 2**  which gives equal weight to all features (as a result, playlist languages and genres are ignored)
  
  **Spotify Model**, which is available through the Spotify API
 
