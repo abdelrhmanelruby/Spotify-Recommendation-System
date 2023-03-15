@@ -10,6 +10,7 @@ artist_features.txt
 Streamlit/.cache
 Streamlit/__pycache__
 Streamlit/Data
+Streamlit/Spotify
 
 spotify_million_playlist_dataset
 spotify_million_playlist_dataset_challenge.zip
