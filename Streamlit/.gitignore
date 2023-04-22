@@ -1,9 +1,4 @@
 .cache
 __pycache__
-Spotify/Spotify1.yaml
-Spotify/Spotify2.yaml
-Spotify/Spotify3.yaml
-Spotify/Spotify4.yaml
-Spotify/Spotify5.yaml
-Spotify/Spotify6.yaml
-
+Spotify/*
+Spotify/Spotify.yaml

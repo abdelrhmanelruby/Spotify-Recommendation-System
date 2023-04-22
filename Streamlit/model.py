@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 import pickle
+import streamlit as st
 
 def playlist_model(url, model, max_gen=3, same_art=5):
     log = []
@@ -14,10 +15,14 @@ def playlist_model(url, model, max_gen=3, same_art=5):
     try:
      log.append('Start logging')
      uri = url.split('/')[-1].split('?')[0]
-     stream = open("Spotify/Spotify.yaml")
-     spotify_details = yaml.safe_load(stream)
-     auth_manager = SpotifyClientCredentials(
-         client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
+     try:
+        stream = open("Spotify/Spotify.yaml")
+        spotify_details = yaml.safe_load(stream)
+        auth_manager = SpotifyClientCredentials(client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
+     except:
+        Client_id=st.secrets['Client ID']
+        client_secret=st.secrets['Client secret']
+        auth_manager = SpotifyClientCredentials(client_id=Client_id, client_secret=client_secret)
      sp = spotipy.client.Spotify(auth_manager=auth_manager) 
 
      if model == 'Spotify Model':
