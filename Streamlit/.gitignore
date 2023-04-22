@@ -1,4 +1,4 @@
 .cache
 __pycache__
 Spotify/*
-Spotify/Spotify.yaml
+.streamlit/

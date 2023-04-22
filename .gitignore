@@ -16,3 +16,6 @@ spotify_million_playlist_dataset
 spotify_million_playlist_dataset_challenge.zip
 spotify_million_playlist_dataset.zip
 spotify_demo.mp4
+
+.streamlit/
+
