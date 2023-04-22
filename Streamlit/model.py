@@ -288,13 +288,26 @@ def playlist_model(url, model, max_gen=3, same_art=5):
 
 
 def top_tracks(url,region):
-    uri = url.split('/')[-1].split('?')[0]
-    stream= open("Spotify/Spotify.yaml")
-    spotify_details = yaml.safe_load(stream)
-    auth_manager = SpotifyClientCredentials(client_id=spotify_details['Client_id'],client_secret=spotify_details['client_secret'])
-    sp = spotipy.client.Spotify(auth_manager=auth_manager)
     log = []
     Fresult = []
+    uri = url.split('/')[-1].split('?')[0]
+    try:
+        log.append('spotify local method')
+        stream = open("Spotify/Spotify.yaml")
+        spotify_details = yaml.safe_load(stream)
+        auth_manager = SpotifyClientCredentials(client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
+    except:
+        log.append('spotify .streamlit method')
+        try:
+            Client_id=st.secrets["Client_ID"]
+            client_secret=st.secrets["Client_secret"]
+            auth_manager = SpotifyClientCredentials(client_id=Client_id, client_secret=client_secret)
+        except:
+            log.append('spotify hug method')
+            Client_id=os.environ['Client_ID']
+            client_secret=os.environ['Client_secret']
+            auth_manager = SpotifyClientCredentials(client_id=Client_id, client_secret=client_secret)
+    sp = spotipy.client.Spotify(auth_manager=auth_manager)
     try:
         log.append('Starting Spotify Model')
         top=sp.artist_top_tracks(uri,country=region)
@@ -312,11 +325,23 @@ def song_model(url, model, max_gen=3, same_art=5):
     try:
      log.append('Start logging')
      uri = url.split('/')[-1].split('?')[0]
-     stream = open("Spotify/Spotify.yaml")
-     spotify_details = yaml.safe_load(stream)
-     auth_manager = SpotifyClientCredentials(
-         client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
-     sp = spotipy.client.Spotify(auth_manager=auth_manager) 
+     try:
+        log.append('spotify local method')
+        stream = open("Spotify/Spotify.yaml")
+        spotify_details = yaml.safe_load(stream)
+        auth_manager = SpotifyClientCredentials(client_id=spotify_details['Client_id'], client_secret=spotify_details['client_secret'])
+     except:
+        log.append('spotify .streamlit method')
+        try:
+            Client_id=st.secrets["Client_ID"]
+            client_secret=st.secrets["Client_secret"]
+            auth_manager = SpotifyClientCredentials(client_id=Client_id, client_secret=client_secret)
+        except:
+            log.append('spotify hug method')
+            Client_id=os.environ['Client_ID']
+            client_secret=os.environ['Client_secret']
+            auth_manager = SpotifyClientCredentials(client_id=Client_id, client_secret=client_secret)
+     sp = spotipy.client.Spotify(auth_manager=auth_manager)
 
      if model == 'Spotify Model':
         log.append('Starting Spotify Model')
