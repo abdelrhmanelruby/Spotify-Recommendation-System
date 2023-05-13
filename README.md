@@ -1,5 +1,5 @@
 # Spotify-Recommendation-System
-Please visit the following link to access the demo version: [Spotify-Recommendation-System](https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System)
+Please visit the following link to access the demo version: [Spotify-Recommendation-System](https://longliveruby-spotify-recommendation-system.hf.space/)
 
 
 
