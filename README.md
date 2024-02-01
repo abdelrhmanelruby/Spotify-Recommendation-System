@@ -1,11 +1,8 @@
 # Spotify-Recommendation-System
-Please visit the following link to access the demo version: [Spotify-Recommendation-System](https://longliveruby-spotify-recommendation-system.hf.space/)
+Please visit the following link to access the demo version: [Spotify-Recommendation-System](https://huggingface.co/spaces/Longliveruby/Spotify-Recommendation-System)
 
 
-
-https://user-images.githubusercontent.com/107134115/201241072-06681109-72ad-4416-b5f0-35322646dc1e.mp4
-
-
+YouTube video demonstrating the Streamlit app: https://youtu.be/VASd9UEKWUo?si=989u_19ec3VSI6JN
 
 
 ## Description
